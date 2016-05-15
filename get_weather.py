@@ -22,11 +22,18 @@ def get_weather(state, city):
 
 def get_current_conditions():
     data = get_weather("WA", "Seattle")
-    result = 'Current Temp: ' + data['current_observation']['temperature_string']+ '\nWeather: ' + data['current_observation']['weather']
-    #result = {}
-    # result['current_temp'] = data['current_observation']['temperature_string']
-    # result['wind_speed'] = data['current_observation']['wind_mph']
-    # result['weather'] = data['current_observation']['weather']
+    # Temp = data['current_observation']['temperature_string']
+    # Weather = data['current_observation']['weather']
+    # City = data['current_observation']['display_location']['city']
+    # State = data['current_observation']['display_location']['state']
+    # result = Temp + Weather + ' ' + City + ' ' + State
+    #print (result)
+    #result = 'Current Temp: ' + data['current_observation']['temperature_string']+ '\nWeather: ' + data['current_observation']['weather']
+    result = {}
+    result['current_temp'] = data['current_observation']['temperature_string']
+    result['weather'] = data['current_observation']['weather']
+    result['city'] = data['current_observation']['display_location']['city']
+    result['state'] = data['current_observation']['display_location']['state']
     return result
 
 
@@ -35,4 +42,4 @@ if __name__ == "__main__":
 
     #print()
     #print('Seattle current weather:')
-    #print(get_current_conditions())
+    print(get_current_conditions())

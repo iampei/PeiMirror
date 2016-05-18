@@ -11,6 +11,9 @@
     <script type="text/javascript"></script>
     <title>Magic Mirror</title>
     <!--<style type="text/css"></style>-->
+    <style type="text/css">
+      xsmall {font-size: 25px;}
+    </style>
 </head>
 <body>
 
@@ -20,18 +23,26 @@
         -->
         <link rel="stylesheet" type="text/css" href="static/main.css">
 
-        <p>{{city}} {{state}}</p>
         <p>
+            <xsmall><span id=date>{{date}}</span></xsmall>
+        </p>
+
+        <time>
             <span id=time>{{time}}</span>
             <!--<a href=# id=get_time>get time</a>-->
-        </p>
-        <p>{{current_temp}} {{weather}}</p>
-        <p><span id=compliment>{{compliment}}</span></p>
+        </time>
+ 
+        <p><small>{{city}} {{state}}</small></p>
+
+        <temp>{{current_temp}}</temp> 
+        <p>{{weather}}</p>
+        <bottom><span id=compliment>{{compliment}}</span></bottom>
 
 <script type="text/javascript">
 setInterval(function(){
     $.ajax({ url:'/_get_update',
              success: function(data){$("#time").text(data.time);
+                                     $("#date").text(data.date);
                                      $("#compliment").text(data.compliment)
                                     },
              dataType: "json"} );

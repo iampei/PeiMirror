@@ -34,8 +34,10 @@
  
         <p><small>{{city}} {{state}}</small></p>
 
-        <temp>{{current_temp}}</temp> 
-        <p>{{weather}}</p>
+        <temp id=current_temp>{{current_temp}}</temp> 
+
+        <p id = weather>{{weather}}</p>
+
         <bottom><span id=compliment>{{compliment}}</span></bottom>
 
 <script type="text/javascript">
@@ -47,6 +49,14 @@ setInterval(function(){
                                     },
              dataType: "json"} );
             }, 30000);
+
+setInterval(function(){
+    $.ajax({ url:'/_get_newweather',
+             success: function(data){$("#current_temp").text(data.current_temp);
+                                     $("#weather").text(data.weather)
+                                    },
+             dataType: "json"} );
+            }, 3600000);
 
 </script>
 

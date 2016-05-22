@@ -45,16 +45,31 @@ def test():
 
 @app.route('/_get_update')
 def _get_update():
-    #current_weather = get_weather.get_current_conditions()
+    
     #time_string = datetime.datetime.now().strftime("%a, %b-%d-%Y, %I:%M %p")
-    time_string = datetime.datetime.now().strftime("%I:%M %p")
-    date_string = datetime.datetime.now().strftime("%a, %b-%d-%Y")
-    compliment = get_compliment()
+    update_dic ={}
+    now = datetime.datetime.now()
+    update_dic['time'] = now.strftime("%I:%M %p")
+    #time_string = datetime.datetime.now().strftime("%I:%M %p")
+    update_dic['date'] = now.strftime("%a, %b-%d-%Y")
+    update_dic['compliment'] = get_compliment()
     #weather_update = current_weather['weather']
+    #update_dic.update(current_weather)
     #temp_update = current_weather['current_temp']
 
     #print('_get_time called')
-    return jsonify(time=time_string, date = date_string, compliment = compliment) #weather = weather_update, #temp = temp_update)
+    return jsonify(**update_dic) #weather = weather_update, #temp = temp_update)
+
+#count = [0]
+@app.route('/_get_newweather')
+def _get_newweather():
+    current_weather = get_weather.get_current_conditions()
+    print('_get_newweather is called')
+    #count[0] +=1
+    #current_weather['weather'] = current_weather['weather'] + '%i' %count[0]
+
+    return jsonify(**current_weather)
+
 
 if __name__ == '__main__':
     app.run()

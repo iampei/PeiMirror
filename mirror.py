@@ -21,7 +21,7 @@ def get_compliment():
     if  6 < int(hour) <=11:
         word_string = ['Have a beartestic day!', 'You are a super star!', 'Rock the day!', 'Looking good this morning!']
     if 11 < int(hour) <=14:
-        word_string = ['It is meowlunch time!', 'Go out and have fun']
+        word_string = ["It's meowlunch time!", "Go out and have fun"]
     if 14 < int(hour) <= 19:
         word_string = ['Have a good afternoon!', 'Time to pick out a show to watch!']
     if 19 < int(hour) < 23:

@@ -17,13 +17,19 @@ app.config.from_object(__name__)
 
 def get_compliment():
     hour = datetime.datetime.now().strftime("%H")
-    word_string = ['Hey, you look nice!']
-    if int(hour) <17:
-        word_string = ['Have a good afternoon!', 'You are a super star!']
-    if 17 < int(hour) < 19:
-        word_string = ['Go out and have fun!', 'Have a nice evening!']
-    if int(hour) >= 19:
-        word_string = ['Hello, you are awesome!', 'Have a nice night!', 'You look nice!']
+    word_string = []
+    if  6 < int(hour) <=11:
+        word_string = ['Have a beartestic day!', 'You are a super star!', 'Rock the day!', 'Looking good this morning!']
+    if 11 < int(hour) <=14:
+        word_string = ['It is meowlunch time!', 'Go out and have fun']
+    if 14 < int(hour) <= 19:
+        word_string = ['Have a good afternoon!', 'Time to pick out a show to watch!']
+    if 19 < int(hour) < 23:
+        word_string = ['Have a nice dream!', 'Sweet dreams!', 'Have a nice night!', 'You look nice this evening!']
+    if int(hour) >= 23:
+        word_string = ['You should go to bed now...', 'Why are you still up?']
+    else:
+        word_string = ['Hey, you look nice!']
     #current_weather['compliment'] = random.choice(word_string)
     return (random.choice(word_string))
 

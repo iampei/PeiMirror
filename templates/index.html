@@ -11,9 +11,7 @@
     <script type="text/javascript"></script>
     <title>Magic Mirror</title>
     <!--<style type="text/css"></style>-->
-    <style type="text/css">
-      xsmall {font-size: 25px;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
 </head>
 <body>
 
@@ -21,24 +19,23 @@
         <link rel="stylesheet" type="text/css" href="static/weather-icons.css">
         <link rel="stylesheet" type="text/css" href="static/font-awesome.css">
         -->
-        <link rel="stylesheet" type="text/css" href="static/main.css">
+        <div class="top left">
+          <div class="windsun small dimmed"><span id=date>{{date}}</span></div>
+          <time>
+              <span id=time>{{time}}</span>
+          </time>
+        </div>
 
-        <p>
-            <xsmall><span id=date>{{date}}</span></xsmall>
-        </p>
+        <div class="top right">
+          <div class="medium dimmed">{{city}} {{state}}</div>
+          <div class = "medium"><br>
 
-        <time>
-            <span id=time>{{time}}</span>
-            <!--<a href=# id=get_time>get time</a>-->
-        </time>
- 
-        <p><small>{{city}} {{state}}</small></p>
+          <temp id=current_temp>{{current_temp}}</temp>
+          <weather id = weather>{{weather}}</weather>
+          </div>
+        </div>
 
-        <temp id=current_temp>{{current_temp}}</temp> 
-
-        <p id = weather>{{weather}}</p>
-
-        <bottom><span id=compliment>{{compliment}}</span></bottom>
+        <div class="lower-third center-hor"><span id=compliment>{{compliment}}</span></div>
 
 <script type="text/javascript">
 setInterval(function(){

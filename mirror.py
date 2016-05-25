@@ -17,18 +17,18 @@ app.config.from_object(__name__)
 
 def get_compliment():
     hour = datetime.datetime.now().strftime("%H")
-    word_string = []
+    word_string = ['Hey, you look nice!']
     if  6 < int(hour) <=11:
         word_string = ['Have a beartestic day!', 'You are a super star!', 'Rock the day!', 'Looking good this morning!']
     if 11 < int(hour) <=14:
         word_string = ["It's meowlunch time!", "Go out and have fun"]
     if 14 < int(hour) <= 19:
-        word_string = ['Have a good afternoon!', 'Time to pick out a show to watch!']
-    if 19 < int(hour) < 23:
+        word_string = ['Have a good afternoon!', "Why don't you pick out a show to watch"]
+    if 19 < int(hour) <= 23:
         word_string = ['Have a nice dream!', 'Sweet dreams!', 'Have a nice night!', 'You look nice this evening!']
-    if int(hour) >= 23:
+    if 23 < int(hour) <= 24:
         word_string = ['You should go to bed now...', 'Why are you still up?']
-    else:
+    if int(hour) <=6 :
         word_string = ['Hey, you look nice!']
     #current_weather['compliment'] = random.choice(word_string)
     return (random.choice(word_string))
@@ -64,7 +64,7 @@ def _get_update():
     #temp_update = current_weather['current_temp']
 
     #print('_get_time called')
-    return jsonify(**update_dic) #weather = weather_update, #temp = temp_update)
+    return jsonify(**update_dic) 
 
 #count = [0]
 @app.route('/_get_newweather')

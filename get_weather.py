@@ -6,7 +6,7 @@ import requests
 # example:
 # http://api.wunderground.com/api/455e4a0034eb74d2/conditions/q/WA/Seattle.json
 
-key = "da30a9e85a98e5d8"
+
 
 url_template = "http://api.wunderground.com/api/{key}/conditions/q/{state}/{city}.json"
 
@@ -27,6 +27,7 @@ def get_current_conditions():
     result['weather'] = data['current_observation']['weather']
     result['city'] = data['current_observation']['display_location']['city']
     result['state'] = data['current_observation']['display_location']['state']
+    result['icon'] = data['current_observation']['icon']
     return result
 
 

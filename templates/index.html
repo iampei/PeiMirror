@@ -32,6 +32,8 @@
 
           <temp id=current_temp>{{current_temp}}</temp>
           <weather id = weather>{{weather}}</weather>
+          <br>
+          <img id=image src ={{image}} >
           </div>
         </div>
 
@@ -50,7 +52,9 @@ setInterval(function(){
 setInterval(function(){
     $.ajax({ url:'/_get_newweather',
              success: function(data){$("#current_temp").text(data.current_temp);
-                                     $("#weather").text(data.weather)
+                                     $("#weather").text(data.weather);
+                                     $("#icon").text(data.icon);
+                                     $("#image").text(data.image)
                                     },
              dataType: "json"} );
             }, 3600000);

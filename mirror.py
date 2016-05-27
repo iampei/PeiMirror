@@ -4,6 +4,7 @@ import datetime
 import get_weather
 import random
 
+
 # configuration
 # DATABASE = '/tmp/flaskr.db'
 DEBUG = True
@@ -36,12 +37,18 @@ def get_compliment():
 @app.route("/")
 def hello():
     current_weather = get_weather.get_current_conditions()
+    #URL = http://icons.wxug.com/i/c/i/ICON.gif
+    #file = io.BytesIO(urlopen('http://icons.wxug.com/i/c/i/partlycloudy.gif').read())
+    ICON = current_weather['icon']
+    img = 'http://icons.wxug.com/i/c/k/%s.gif'%ICON
+    #img = 'http://icons.wxug.com/i/c/i/partlycloudy.gif'
     #time_string = datetime.datetime.now().strftime("%a, %b-%d-%Y, %I:%M %p")
     time_string = datetime.datetime.now().strftime("%I:%M %p")
     date_string = datetime.datetime.now().strftime("%a, %b-%d-%Y")
     current_weather['time'] = time_string
     current_weather['date'] = date_string
     current_weather['compliment'] = get_compliment()
+    current_weather['image'] = img
     return render_template('index.html', **current_weather)
 
 @app.route("/test")
